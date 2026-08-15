@@ -33,9 +33,18 @@ function displayStudents() {
                 <p><strong>Student ID:</strong> ${student.id}</p>
                 <p><strong>Name:</strong> ${student.name}</p>
                 <p><strong>Course:</strong> ${student.course}</p>
+
+                <button onclick="deleteStudent('${student.id}')">
+                    Delete
+                </button>
             </div>
         `;
     });
+}
+function deleteStudent(id) {
+    students = students.filter(student => student.id !== id);
+
+    displayStudents();
 }
 function searchStudent() {
     const searchId = document.getElementById("searchId").value;

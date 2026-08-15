@@ -37,3 +37,19 @@ function displayStudents() {
         `;
     });
 }
+function searchStudent() {
+    const searchId = document.getElementById("searchId").value;
+
+    const student = students.find(student => student.id === searchId);
+
+    if (student) {
+        alert(
+            "Student Found!\n" +
+            "ID: " + student.id + "\n" +
+            "Name: " + student.name + "\n" +
+            "Course: " + student.course
+        );
+    } else {
+        alert("Student not found.");
+    }
+}

@@ -33,6 +33,17 @@ function displayStudents(studentList = students) {
 
     tableBody.innerHTML = "";
 
+    if (studentList.length === 0) {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td colspan="4">No student records found.</td>
+        `;
+
+        tableBody.appendChild(row);
+        return;
+    }
+
     studentList.forEach(student => {
         const row = document.createElement("tr");
 
@@ -71,6 +82,21 @@ function searchStudent() {
 }
 
 function deleteStudent(id) {
+    const studentExists = students.some(student => student.id === id);
+
+    if (!studentExists) {
+        showMessage("Student record not found.");
+        return;
+    }
+
+    const confirmDelete = confirm(
+        "Are you sure you want to delete this student?"
+    );
+
+    if (!confirmDelete) {
+        return;
+    }
+
     students = students.filter(student => student.id !== id);
 
     displayStudents();

@@ -86,3 +86,9 @@ function clearForm() {
 function showMessage(message) {
     document.getElementById("message").textContent = message;
 }
+
+function clearSearch() {
+    document.getElementById("searchId").value = "";
+    displayStudents();
+    showMessage("Search cleared. Showing all students.");
+}
